@@ -1,0 +1,28 @@
+.sidebar-item {
+  padding: 1.25em 2em;
+  font-size: 1em;
+  font-weight: 600;
+  color: #4c5457;
+}
+
+.sidebar-item.active {
+  background-color: white;
+  border-left: 5px solid #c15f43;
+}
+
+.sidebar-item.active > .sidebar-notification, .sidebar-notification {
+  float: right;
+  border-radius: 100%;
+  padding: 0.1em 0.55em;
+}
+
+.sidebar-item.active > .sidebar-notification {
+  color: white;
+  background-color: #c15f43;
+  border: 2px solid #c15f43;
+}
+
+.sidebar-notification {
+  color: #4c5457;
+  border: 2px solid #4c5457;
+}

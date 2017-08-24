@@ -1,0 +1,22 @@
+.email-search {
+  padding: 0.5em;
+  border: 2px solid #dcdcdc;
+  text-align: right;
+  font-size: 1.5em;
+}
+
+::-webkit-input-placeholder { /* Chrome/Opera/Safari */
+  color: #dcdcdc;
+}
+
+::-moz-placeholder { /* Firefox 19+ */
+  color: #dcdcdc;
+}
+
+:-ms-input-placeholder { /* IE 10+ */
+  color: #dcdcdc;
+}
+
+:-moz-placeholder { /* Firefox 18- */
+  color: #dcdcdc;
+}

@@ -10,6 +10,28 @@
 
 function render() {
   // TODO 1: Your Code Here
+  var filteredEmails = []
+  var cursor = 0
+
+  //fetchEmailsFromDatabase recursively
+  fetchEmailsFromDatabase(cursor, function filter(response) {
+    let result = response.result
+    let next = response.next
+
+    //If there is no next, then render filteredEmails and break out of recursion
+    if(!next) {
+      renderEmails(filteredEmails)
+      return true
+    }
+
+    //get response filtered, if something is filtered push to filteredEmails
+    let filteredResult = getFilteredEmails(result)
+    if(filteredResult) filteredEmails.push(filteredResult)
+
+    //move position of cursor and fetch new e-mails
+    cursor += result.length
+    fetchEmailsFromDatabase(cursor, filter)
+  })
 }
 
 /*
@@ -26,6 +48,24 @@ function render() {
 
 function getFilteredEmails(allEmails = [], searchInputs = getSearchInputs()) {
   // TODO 2: Your Code Here
+  for (var i = 0; i < searchInputs.length; i++) {
+    for (var j = 0; j < allEmails.length; j++) {
+      let email = allEmails[j]
+      let input = searchInputs[i]
+
+      //Check for if email matches search, return if match or keep looping
+      //I didn't use 'or' simply because of readability
+      if(email.author.includes(input)) {
+        return email
+      } else if(email.subject.includes(input)) {
+        return email
+      } else if(email.body.includes(input)) {
+        return email
+      }
+    }
+  }
+
+  return null
 }
 
 render();
