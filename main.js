@@ -10,6 +10,9 @@
 
 function render() {
   // TODO 1: Your Code Here
+  let emailsList = fetchEmailsFromDatabase(0, renderEmails)
+  // console.log(emails)
+  getFilteredEmails(emailsList)
 }
 
 /*
@@ -26,6 +29,30 @@ function render() {
 
 function getFilteredEmails(allEmails = [], searchInputs = getSearchInputs()) {
   // TODO 2: Your Code Here
+
+  // console.log(allEmails, searchInputs)
+
+ setTimeout( () => {
+  
+  let len = $('.email-item')
+  // console.log(len)
+  let emailListFiltered = []
+  for (i = 0; i < len.length; i++){
+    for (j =0; j < searchInputs.length; j++){
+      if (len[i].innerHTML.includes(searchInputs[j])){
+        emailListFiltered.push(len[i])
+      }
+    }
+  }
+  $('#js-email-list').empty()
+  // console.log(emailListFiltered)
+  _.forEach(emailListFiltered, (em) => {
+  $('#js-email-list').append(em)
+
+  })
+ }, 100)
+
+
 }
 
 render();
@@ -82,7 +109,7 @@ function fetchEmailsFromDatabase(cursor = 0, callback) {
 
   setTimeout(() => {
     const last = emails.length;
-    const next = Math.min(cursor + _.random(1, 3), last);
+    const next = Math.min(cursor + _.random(1, 10), last);
     const fetchedEmails = _.slice(emails, cursor, next);
 
     callback({
@@ -90,10 +117,12 @@ function fetchEmailsFromDatabase(cursor = 0, callback) {
       next: cursor === last ? null : next,
     });
   }, 100);
+  return emails //only thing I changed...
 }
 
 function renderEmails(emails) {
-  const emailListHtml = _.map(emails, ({ author, subject, body }) => {
+  // debugger
+  const emailListHtml = _.map(emails.result, ({ author, subject, body }) => {
     return `<li class="email-item">
               <div class="meta-data">
                 <span> <b>${author}</b>: ${subject} </span>

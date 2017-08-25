@@ -23,7 +23,55 @@ ul {
   min-width: 200px;
   color: #596468;
 }
+.sidebar-item{
+  padding-bottom: 15px;
+  padding-top: 15px;
+  padding-left: 15px;
+  font-weight: bold;
+}
+.sidebar-item .sidebar-notification{
+  border-style: solid;
+  border-radius: 50%;
+  border-color: gray;
+  float: right;
+  padding-right: 10px;
+  padding-left: 10px;
+  padding-top: 5px;
+  padding-bottom: 5px;
+  margin-bottom: 5px;
+  margin-right: 20px;
+  margin-top: -6px;
+  font-size: 12px;
+  font-weight: normal;
+}
 
+.active{
+  border-left: solid;
+  border-left-color: red;
+  border-left-width: 5px;
+  background-color: white;
+  color: black;
+}
+
+.active .sidebar-notification{
+  background-color: red;
+  border-color: red;
+  border-radius: 50%;
+  padding-right: 10px;
+  padding-left: 10px;
+  padding-top: 5px;
+  padding-bottom: 5px;
+  float: right;
+  color: white;
+}
+
+.sidebar-divider{
+  border-top: solid;
+  border-width: 1px;
+  padding-top: 20px;
+  padding-left: 10px; 
+  color: #333;
+}
 .compose-btn {
   display: flex;
   background-color: #ce5135;
